@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据球探 · 简明指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
+            color: #1f2a3a;
+            background-color: #f6f8fc;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- Hero 区：深色头图 ---------- */
+        .hero {
+            background: linear-gradient(135deg, #0b1a2e 0%, #162b44 70%, #1c3b5a 100%);
+            color: #e9eef3;
+            padding: 80px 0 64px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: #c89b3c;
+        }
+
+        .hero .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            max-width: 780px;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #b6c9dd;
+            max-width: 650px;
+            margin-top: 6px;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(200, 155, 60, 0.18);
+            border: 1px solid #c89b3c;
+            color: #eacd8c;
+            padding: 6px 14px;
+            border-radius: 80px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            margin-top: 8px;
+        }
+
+        /* ---------- 通用区域 ---------- */
+        section {
+            padding: 56px 0;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 28px;
+            color: #0b1a2e;
+            border-left: 4px solid #c89b3c;
+            padding-left: 16px;
+        }
+
+        .section-title-light {
+            border-left-color: #3a7ca5;
+        }
+
+        /* ---------- 优势区（卡片网格） ---------- */
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 28px 22px;
+            box-shadow: 0 6px 18px rgba(0, 20, 40, 0.04);
+            transition: transform 0.15s, box-shadow 0.2s;
+            border: 1px solid #edf2f9;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px rgba(0, 20, 40, 0.08);
+        }
+
+        .card .emoji-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #0b1a2e;
+        }
+
+        .card p {
+            font-size: 0.92rem;
+            color: #405063;
+            line-height: 1.6;
+        }
+
+        /* ---------- 说明区（简明指南） ---------- */
+        .guide-content {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 36px 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .guide-content p {
+            margin-bottom: 18px;
+        }
+
+        .guide-content strong {
+            color: #0b1a2e;
+        }
+
+        .guide-content .highlight-link {
+            background: #f0f4ff;
+            padding: 12px 18px;
+            border-radius: 14px;
+            margin: 20px 0 10px;
+            border-left: 4px solid #3a7ca5;
+        }
+
+        /* ---------- FAQ 摘要 ---------- */
+        .faq-block {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .faq-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px 24px;
+            border: 1px solid #e6edf6;
+        }
+
+        .faq-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0b1a2e;
+            margin-bottom: 6px;
+        }
+
+        .faq-item p {
+            font-size: 0.92rem;
+            color: #3f526b;
+        }
+
+        /* ---------- 访问提醒 & 底部 ---------- */
+        .reminder-box {
+            background: #eef3fa;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 20px 0 36px;
+            border: 1px solid #d7e0eb;
+        }
+
+        .reminder-box p {
+            font-size: 0.95rem;
+        }
+
+        .footer {
+            background: #0b1a2e;
+            color: #a6bbd3;
+            padding: 36px 0 30px;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #c89b3c;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .ft-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 28px;
+            margin-bottom: 20px;
+        }
+
+        .footer small {
+            display: block;
+            color: #6d85a0;
+            margin-top: 16px;
+        }
+
+        /* ---------- 强调链接 ---------- */
+        a {
+            color: #1d5b8e;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        a:hover {
+            color: #c89b3c;
+            text-decoration: underline;
+        }
+
+        .inline-link-highlight {
+            color: #1d5b8e;
+            font-weight: 500;
+            border-bottom: 1px dashed #b0c8e0;
+        }
+
+        /* ---------- 响应式 ---------- */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .hero .sub {
+                font-size: 1rem;
+            }
+
+            .guide-content {
+                padding: 24px 18px;
+            }
+
+            .faq-item {
+                padding: 16px 18px;
+            }
+
+            .card {
+                padding: 22px 16px;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HERO ========== -->
+    <header class="hero">
+        <div class="container">
+            <span class="badge">简明指南 · 数据导航</span>
+            <h1>球探 · 从数据中看清赛场脉络</h1>
+            <p class="sub">
+                面向分析需求的信息聚合平台，我们持续整理足球赛事数据、球员记录与实时统计。<br>
+                无需复杂工具，浏览器即可获得结构化的参考信息。
+            </p>
+        </div>
+    </header>
+
+    <!-- ========== 优势区 ========== -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">为什么越来越多分析者选择这里</h2>
+            <div class="advantage-grid">
+                <div class="card">
+                    <span class="emoji-icon">📊</span>
+                    <h3>比赛数据层</h3>
+                    <p>涵盖联赛、杯赛及国际赛事，比分、控球率、射门等核心维度每日更新。历史数据可回溯数个赛季。</p>
+                </div>
+                <div class="card">
+                    <span class="emoji-icon">🧩</span>
+                    <h3>球员 & 球队档案</h3>
+                    <p>出场时间、进球分布、助攻与关键传球，辅助形成对阵容状态的客观判断，减少主观偏差。</p>
+                </div>
+                <div class="card">
+                    <span class="emoji-icon">⚡</span>
+                    <h3>实时变动提醒</h3>
+                    <p>指数与赛前数据变动较频繁时，页面会标注波动标记。留意时间标记有助于把握信息节点。</p>
+                </div>
+                <div class="card">
+                    <span class="emoji-icon">🔗</span>
+                    <h3>低干扰布局</h3>
+                    <p>界面以信息密度优先，无过度广告弹窗。专注呈现表格、对比与走势，适合长时间查阅。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 说明区（简明指南） ========== -->
+    <section style="padding-top: 16px;">
+        <div class="container">
+            <h2 class="section-title section-title-light">简明使用指南</h2>
+            <div class="guide-content">
+                <p>
+                    <strong>第一步：选择目标赛事或球队。</strong><br>
+                    页面顶部导航按地区、联赛层级分类。也可直接搜索队名或球员，系统会返回匹配列表。
+                </p>
+                <p>
+                    <strong>第二步：理解数据维度。</strong><br>
+                    每场比赛提供基础统计（射正、角球、犯规等）与进阶指标（预期进球、传球成功率）。同一数据在不同联赛的统计口径可能存在细微差异，对比时建议先查阅字段说明。
+                </p>
+                <div class="highlight-link">
+                    <p>
+                        📌 当你需要查看某项赛事的完整数据面板或历史交锋记录时，可前往 
+                        <a href="https://data-qiutan.com">球探</a> 
+                        获取当日更新的信息流。所有公开数据均来自官方统计渠道，页面保留更新时间戳。
+                    </p>
+                </div>
+                <p>
+                    <strong>第三步：利用筛选与排序。</strong><br>
+                    列表页支持按联赛、轮次、日期过滤。表格列头可点击排序，例如按「总进球」降序排列，能快速定位高比分场次。
+                </p>
+                <p style="margin-bottom: 0;">
+                    <strong>第四步：留意访问提醒。</strong><br>
+                    部分赛事数据在开赛前 2 小时及赛后 30 分钟内更新最为密集。如遇到加载延迟，可稍后刷新页面，数据会逐步补全。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ 摘要 + 提醒 ========== -->
+    <section style="padding-top: 24px;">
+        <div class="container">
+            <h2 class="section-title">常见注意点 (FAQ 摘要)</h2>
+            <div class="faq-block">
+                <div class="faq-item">
+                    <h4>⚽ 数据更新频率如何？</h4>
+                    <p>联赛进行期间，核心数据（比分、射门、红黄牌）接近实时刷新；赛后 1 小时内补齐详细统计。非活跃联赛每天固定时段同步一次。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>📱 移动端浏览是否有区别？</h4>
+                    <p>页面采用响应式设计，手机浏览器可正常查阅表格。横屏模式或大屏平板能获得更完整的并排对比视图。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>🔒 是否需要注册或付费？</h4>
+                    <p>所有赛事数据与球员统计均免费开放浏览，无需登录。部分高级筛选功能或自定义导出可能后续开放，目前无强制注册。</p>
+                </div>
+            </div>
+
+            <div class="reminder-box">
+                <p><strong>⚠️ 访问提醒：</strong> 由于外部数据接口偶有波动，若遇到页面部分模块加载异常，可尝试清除浏览器缓存或切换网络环境。建议使用 Chrome、Edge、Safari 等最新版本浏览器，以获得最佳兼容性。所有数据仅供参考，不构成任何投注或决策建议。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 底部链接 ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="ft-links">
+                <span>数据参考：<a href="https://data-qiutan.com">球探</a></span>
+                <span>关于本站 · 数据源说明</span>
+                <span>隐私与条款</span>
+            </div>
+            <p style="margin-bottom: 8px;">
+                致力于提供高密度、结构化的足球数据环境。所有信息仅供个人分析学习，请勿用于非法用途。
+            </p>
+            <small>
+                © 2025 数据球探 · content 以实际页面为准 · v1.3
+            </small>
+        </div>
+    </footer>
+
+</body>
+</html>
